@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>360 RoomView</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="https://aframe.io/releases/0.9.2/aframe.min.js" ></script>
+        </body>
+    </head>
+    <body>
+        <div class="panel unselect">
+                <div class="title">
+                    VR DEMO
+                </div>
+                    <div id="vr" class="vr unselect">
+                    <a-scene 
+                    embedded vr-mode-ui="enabled: false"
+                    loading-screen="enabled: false">
+                        <a-assets  id="a-assets">
+                            <video id="antarctica" autoplay loop="true" src="waterfall.mp4"> </video>
+                        </a-assets>
+                        <!-- Using the asset management system. -->
+                        <a-videosphere src="#antarctica"></a-videosphere>
+
+                        <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
+                        <!-- <a-videosphere src="africa.mp4"></a-videosphere> -->
+                    </a-scene>
+                </div> 
+                <div class="house unselect">
+                        <img class="housedesign unselect" src="design.jpg"  />
+                        <img class="btnlocation location_1 unselect" src="giphy.gif"  onclick="showImg('#panorama')"/>
+                        <img class="btnlocation location_2 unselect" src="giphy.gif"  onclick="showImg('#panorama2')"/>
+                        <img class="btnlocation location_3 unselect" src="giphy.gif"  onclick="showImg('#panorama3')"/>
+                </div>
+      
+        <script type="text/javascript">
+
+        function showImg(n) 
+        {
+            var sky = document.querySelector('a-sky');   
+            var vr = document.getElementById("vr");
+            vr.className += " fade-out";
+            
+            setTimeout(function(){
+                sky.setAttribute("src", n);  
+                 vr.className   = "vr unselect fade-in";
+
+                setTimeout(function(){
+                    vr.className   = "vr unselect";
+                    }
+                    ,1000);
+
+
+                }
+                ,1000);
+        }
+
+ 
+
+
+
+        </script>
+
+    <style>
+     body{
+            background-color: gray;
+        }
+        .panel{
+            margin: 5% auto;
+            width: 90vw;
+            height: 42.4vw;
+            background-color: rgb(236, 236, 236);
+            box-shadow:0.5em 0.2em 0.4em rgb(66, 66, 66);
+        }
+        .title{
+            width: 100%;
+            height: 10%;
+            text-align: center;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 3.5vw;
+        }
+        .vr{
+          position: relative;
+            width: 50%;
+            height: 90%;
+            float: left;
+        }
+        .house{
+            position: relative;
+            width: 50%;
+            height: 90%;
+            float: right;
+        }
+        .housedesign{
+            position: absolute;
+            left: 25%;
+            top:  13.5%;
+            width: 50%;
+            height: 75%;
+            box-shadow: 0.2em 0.1em 0.3em rgb(100, 100, 100);
+        }
+        .btnlocation{
+            position: absolute;
+            width: 13%;
+            height: 15%;
+            cursor: pointer;
+        }
+        .location_1{
+            left: 53%;
+            top:   13%;
+        }
+        .location_2{
+            left: 32%;
+            top:   50%;
+        }
+        .location_3{
+            left: 55%;
+            top:  48%;
+        }
+        a-scene{
+            position: absolute;
+            top: 18.75%;
+            left: 5%;
+            width:100%;
+            height: 62.5%;
+            box-shadow:0.1em 0.1em 0.3em rgb(66, 66, 66);
+        }
+        .unselect{
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+.fade-in {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+.fade-out {
+  animation: fadeOut ease 1s;
+  -webkit-animation: fadeOut ease 1s;
+  -moz-animation: fadeOut ease 1s;
+  -o-animation: fadeOut ease 1s;
+  -ms-animation: fadeOut ease 1s;
+}
+
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+
+
+@keyframes fadeOut{
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+    </style>
+</html>
